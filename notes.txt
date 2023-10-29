@@ -1,0 +1,41 @@
+* to open page http://laracasts-php-beginners.test/
+
+* moving all view files to its own directory helps clean up the directory.
+
+* creating partials helps remove duplication in view file. Use require to include or add the partial to your view file.
+By doing this you rmove any duplication of html.
+
+* Functions just do things they are teh vewrbs of programming. to create a function simply;
+    function name()
+    {
+        do stuff in here
+    }
+
+* Functions with variables passed are done like this;
+    function name($variable)
+    {
+        $variable do something
+    }
+
+example function
+
+function dd($value)
+{
+    echo "<pre>";
+    var_dump($value);
+    echo "</pre>
+
+    die();
+}
+
+the above example take teh variable and dumps it to the screen and then dies the application. This is particulally useful if you want to see what vairable is being passsed
+or if you want to dump the super global to the screen.
+
+* Create ans manage your functions in a single page, then use the require at the top of the file to access those functions
+
+upto episode 15 - Make a PHP Router
+
+
+
+
+
