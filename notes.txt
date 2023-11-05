@@ -33,7 +33,49 @@ or if you want to dump the super global to the screen.
 
 * Create ans manage your functions in a single page, then use the require at the top of the file to access those functions
 
-upto episode 15 - Make a PHP Router
+
+* Use the php function parse_url(); to only slect the path even id there is a query string in the uri e.g 
+    '$uri = parse_url($_SERVER['REQUEST_URI'])['path'];'
+    returns
+    string(1) "/"
+
+* Using the php fuction if (array_key_exists) you can loop over the array creatded for the routes and require
+the uri array when needed e.g 
+'if (array_key_exists($uri, $routes)) {
+    require $routes[$uri];
+}'
+
+adding an else statement to the above allows you to redirect to how ever you'd like to handle the incorrect uri.
+
+e.g
+'else {
+    http_response_code(404);
+    require './controllers/404.php';
+}'
+
+returns a 404 page not found http response code and view.
+
+* Creating an abort function moves the code into the functions file where it belongs.
+    'function  abort($code = 404) {
+    http_response_code($code);
+    require "./controllers/{$code}.php";
+}'
+
+* Making a route to controllers function also moves the code to the functions file to make it eaiser to manage.
+    'function routeToControllers($uri, $routes) {
+    if (array_key_exists($uri, $routes)) {
+        require $routes[$uri];
+    } else {
+        abort($code);
+    }
+}'
+
+by moving all the router functions and code into it own router.php file, we can have a single source for the code, making
+it easier to manage.
+
+
+
+upto episode 16 - Create a MYSQL Database
 
 
 
